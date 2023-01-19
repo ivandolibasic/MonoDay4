@@ -1,0 +1,28 @@
+CREATE TABLE Car
+(
+	Id uniqueidentifier PRIMARY KEY default newID(),
+	Manufacturer VARCHAR(255),
+	Model VARCHAR(255),
+	YearOfProduction INT
+);
+
+INSERT INTO Car (Id, Manufacturer, Model, YearOfProduction)
+	VALUES
+	('{F9168C5E-CEB2-4faa-B6BF-329BF39FA1E4}', 'Toyota', 'Camry', 2020),
+	('{F9168C5E-CEB2-4faa-B6BF-329BF39FA1E5}', 'Honda', 'Civic', 2019),
+	('{F9168C5E-CEB2-4faa-B6BF-329BF39FA1E6}', 'Ford', 'Mustang', 2018),
+	('{F9168C5E-CEB2-4faa-B6BF-329BF39FA1E7}', 'Chevrolet', 'Corvette', 2017),
+	('{F9168C5E-CEB2-4faa-B6BF-329BF39FA1E8}', 'Tesla', 'Model S', 2016);
+
+CREATE TABLE CarDealership
+(
+	Id UNIQUEIDENTIFIER PRIMARY KEY default newID(),
+	NumberOfCars INT,
+	IsSold CHAR,
+	CarId UNIQUEIDENTIFIER,
+	FOREIGN KEY (CarId) REFERENCES Car(Id)
+);
+
+--Single car dealership has multiple cars (1:n relation)
+
+--TBD...
